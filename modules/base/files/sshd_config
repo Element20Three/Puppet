@@ -122,8 +122,9 @@ X11Forwarding yes
 #UsePrivilegeSeparation yes
 #PermitUserEnvironment no
 #Compression delayed
-ClientAliveInterval 620
-ClientAliveCountMax 3
+ClientAliveInterval 30
+TCPKeepAlive yes
+ClientAliveCountMax 99999
 #ShowPatchLevel no
 #UseDNS yes
 #PidFile /var/run/sshd.pid
