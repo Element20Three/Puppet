@@ -7,21 +7,13 @@ $topscope = "This is from the ~ site.pp~ file"
 #}
 
 node "docker.nvanadium.com" {
-	class { 'ntp': package => 'ntp', }
-	include ntp::service
+#	class { 'ntp': package => 'ntp', }
+#	include ntp::service
+	include hierademo
+	include roles::webserver
 }
 	
 
 node /puppet\d{1}|.*.nvanadium.com$/ {
-	$nodescope = "defined within our node"
-	include localusers
-	include localusers::groups::wheel
-	include localusers::groups::finance
-	include base
-	include base::params
-	include base::ssh
-	include base::variables
-	include ntp
-#	notify { 'Rejoice! Puppetmaster is here!': }	
-
+	include roles::webserver
 }
